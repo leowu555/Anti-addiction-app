@@ -28,19 +28,17 @@ export function generateStimulus(): StimulusType {
 /**
  * Generates a full game sequence with ~30% matches.
  * @param length Number of stimuli in sequence
- * @returns Array of stimuli
+ * @param back N-back level (2, 3, or 4)
  */
-export function generateSequence(length: number): StimulusType[] {
+export function generateSequence(length: number, back: number = 2): StimulusType[] {
   const sequence: StimulusType[] = [];
 
   for (let i = 0; i < length; i++) {
-    if (i >= 2 && Math.random() < MATCH_PROBABILITY) {
-      // Force a match: use the stimulus from 2 steps back
-      sequence.push(sequence[i - 2]);
+    if (i >= back && Math.random() < MATCH_PROBABILITY) {
+      sequence.push(sequence[i - back]);
     } else {
-      // Random stimulus, but avoid accidental matches
       let stimulus = generateStimulus();
-      while (i >= 2 && stimulus === sequence[i - 2]) {
+      while (i >= back && stimulus === sequence[i - back]) {
         stimulus = generateStimulus();
       }
       sequence.push(stimulus);
@@ -51,20 +49,20 @@ export function generateSequence(length: number): StimulusType[] {
 }
 
 /**
- * Checks if the current stimulus matches the one 2 steps earlier.
+ * Checks if the current stimulus matches the one N steps earlier.
  */
-export function checkMatch(currentIndex: number, sequence: StimulusType[]): boolean {
-  if (currentIndex < 2) return false;
-  return sequence[currentIndex] === sequence[currentIndex - 2];
+export function checkMatch(currentIndex: number, sequence: StimulusType[], back: number = 2): boolean {
+  if (currentIndex < back) return false;
+  return sequence[currentIndex] === sequence[currentIndex - back];
 }
 
 /**
  * Counts total match opportunities in a sequence (for accuracy calc).
  */
-export function countTotalMatches(sequence: StimulusType[]): number {
+export function countTotalMatches(sequence: StimulusType[], back: number = 2): number {
   let count = 0;
-  for (let i = 2; i < sequence.length; i++) {
-    if (sequence[i] === sequence[i - 2]) count++;
+  for (let i = back; i < sequence.length; i++) {
+    if (sequence[i] === sequence[i - back]) count++;
   }
   return count;
 }

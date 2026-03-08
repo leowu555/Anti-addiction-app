@@ -1,6 +1,6 @@
 /**
  * useTwoBackGame
- * Manages 2-back game state: sequence, timing, scoring.
+ * Manages N-back game state (2, 3, or 4-back): sequence, timing, scoring.
  */
 
 import { useState, useCallback, useRef, useEffect } from 'react';
@@ -23,7 +23,7 @@ export interface GameResult {
 const GAME_DURATION_MS = 60_000;
 const STIMULUS_INTERVAL_MS = 2000;
 
-export function useTwoBackGame(onGameEnd: (result: GameResult) => void) {
+export function useTwoBackGame(onGameEnd: (result: GameResult) => void, back: number = 2) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [sequence, setSequence] = useState<StimulusType[]>([]);
@@ -60,7 +60,7 @@ export function useTwoBackGame(onGameEnd: (result: GameResult) => void) {
     }
     setIsPlaying(false);
     const seq = sequenceRef.current;
-    const totalMatches = countTotalMatches(seq);
+    const totalMatches = countTotalMatches(seq, back);
     onGameEnd({
       correctMatches: correctMatchesRef.current,
       falsePositives: falsePositivesRef.current,
@@ -74,7 +74,7 @@ export function useTwoBackGame(onGameEnd: (result: GameResult) => void) {
   const handleMatch = useCallback(() => {
     if (!isPlaying || sequence.length === 0) return;
 
-    const isMatch = checkMatch(currentIndex, sequence);
+    const isMatch = checkMatch(currentIndex, sequence, back);
     const now = Date.now();
 
     if (isMatch) {
@@ -87,10 +87,10 @@ export function useTwoBackGame(onGameEnd: (result: GameResult) => void) {
       missesRef.current += 1;
       setMisses((m) => m + 1);
     }
-  }, [isPlaying, sequence, currentIndex]);
+  }, [isPlaying, sequence, currentIndex, back]);
 
   const startGame = useCallback(() => {
-    const seq = generateSequence(Math.ceil(GAME_DURATION_MS / STIMULUS_INTERVAL_MS) + 5);
+    const seq = generateSequence(Math.ceil(GAME_DURATION_MS / STIMULUS_INTERVAL_MS) + 5, back);
     correctMatchesRef.current = 0;
     falsePositivesRef.current = 0;
     missesRef.current = 0;
@@ -119,7 +119,7 @@ export function useTwoBackGame(onGameEnd: (result: GameResult) => void) {
       }
 
       const prevIdx = idx - 1;
-      const wasMatch = checkMatch(prevIdx, seq);
+      const wasMatch = checkMatch(prevIdx, seq, back);
       if (wasMatch && !matchedIndicesRef.current.has(prevIdx)) {
         missesRef.current += 1;
         setMisses((m) => m + 1);
@@ -131,7 +131,7 @@ export function useTwoBackGame(onGameEnd: (result: GameResult) => void) {
     gameEndRef.current = setTimeout(() => {
       endGame();
     }, GAME_DURATION_MS);
-  }, [endGame]);
+  }, [endGame, back]);
 
   useEffect(() => {
     return () => {

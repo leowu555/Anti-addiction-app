@@ -11,18 +11,27 @@ import { Modal } from './components/UI/Modal';
 import { Button } from './components/UI/Button';
 import { useDoomscrollDetector } from './hooks/useDoomscrollDetector';
 
+const BACK_OPTIONS = [2, 3, 4];
+
 function AppContent() {
   const [showInterruption, setShowInterruption] = useState(false);
+  const [challengeBack, setChallengeBack] = useState(2);
   const navigate = useNavigate();
-  const { resetTrigger } = useDoomscrollDetector(() => setShowInterruption(true));
+  const { resetTrigger } = useDoomscrollDetector(() => {
+    setChallengeBack(BACK_OPTIONS[Math.floor(Math.random() * BACK_OPTIONS.length)]);
+    setShowInterruption(true);
+  });
 
   const handleStartChallenge = () => {
     setShowInterruption(false);
     resetTrigger();
-    navigate('/game');
+    navigate(`/game?back=${challengeBack}`);
   };
 
-  const handleSimulate = () => setShowInterruption(true);
+  const handleSimulate = () => {
+    setChallengeBack(BACK_OPTIONS[Math.floor(Math.random() * BACK_OPTIONS.length)]);
+    setShowInterruption(true);
+  };
 
   return (
     <>
@@ -40,10 +49,11 @@ function AppContent() {
             You're doomscrolling. Let's turn this into brain training.
           </h2>
           <p className="text-slate-400">
-            Take a quick 2-Back challenge to sharpen your focus.
+            Take a quick {challengeBack}-back challenge to sharpen your focus.
           </p>
+          <p className="text-sm text-cyan-400/80">This is a {challengeBack}-back game</p>
           <Button variant="primary" size="lg" fullWidth onClick={handleStartChallenge}>
-            Start 2-Back Challenge
+            Start {challengeBack}-Back Challenge
           </Button>
           <button
             className="block w-full text-sm text-slate-500 hover:text-slate-400"

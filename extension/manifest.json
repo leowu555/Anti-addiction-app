@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "ScrollShield",
+  "name": "Monk Mode",
   "version": "1.0.0",
   "description": "Detect doomscrolling on TikTok, Instagram, YouTube and redirect to brain training",
   "permissions": ["storage", "tabs"],
@@ -15,7 +15,7 @@
     "service_worker": "background.js"
   },
   "action": {
-    "default_title": "ScrollShield",
+    "default_title": "Monk Mode",
     "default_popup": "popup.html"
   },
   "content_scripts": [

@@ -20,6 +20,7 @@ interface TwoBackGameProps {
   handleMatch: () => void;
   onDone: () => void;
   result: GameResult | null;
+  back: number;
 }
 
 const ENCOURAGING_MESSAGES = [
@@ -46,6 +47,7 @@ export function TwoBackGame({
   handleMatch,
   onDone,
   result,
+  back,
 }: TwoBackGameProps) {
   if (result) {
     const accuracy = result.totalMatches > 0 ? result.correctMatches / result.totalMatches : 0;
@@ -73,9 +75,9 @@ export function TwoBackGame({
   if (!isPlaying) {
     return (
       <div className="space-y-6 text-center">
-        <h2 className="text-2xl font-bold text-slate-100">2-Back Challenge</h2>
+        <h2 className="text-2xl font-bold text-slate-100">{back}-Back Challenge</h2>
         <p className="text-slate-400">
-          Press MATCH when the current letter matches the one from 2 steps ago.
+          Press MATCH when the current letter matches the one from {back} steps ago.
         </p>
         <Button variant="primary" size="lg" onClick={startGame}>
           Start Game
@@ -86,6 +88,7 @@ export function TwoBackGame({
 
   return (
     <div className="space-y-8">
+      <p className="text-center text-sm font-medium text-cyan-400">{back}-back game</p>
       <ProgressBar progress={progress} label="Time" showValue />
       <p className="text-center text-slate-400">
         {Math.floor(elapsed)}s / 60s

@@ -9,8 +9,8 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'robots.txt'],
       manifest: {
-        name: 'ScrollShield',
-        short_name: 'ScrollShield',
+        name: 'Monk Mode',
+        short_name: 'Monk Mode',
         description: 'Turn doomscrolling into brain training with 2-Back memory game',
         theme_color: '#0f172a',
         background_color: '#0f172a',

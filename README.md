@@ -1,4 +1,4 @@
-# ScrollShield
+# Monk Mode
 
 **Turn doomscrolling into brain training.** A hackathon project that interrupts passive scrolling and replaces it with a scientifically-backed 2-Back working memory game.
 

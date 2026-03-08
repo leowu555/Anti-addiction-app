@@ -2,7 +2,7 @@
  * Game - 2-Back game page (full screen).
  */
 
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { TwoBackGame } from '../components/Game/TwoBackGame';
 import { useTwoBackGame } from '../hooks/useTwoBackGame';
 import type { GameResult } from '../hooks/useTwoBackGame';
@@ -11,6 +11,8 @@ import { saveSession } from '../utils/metrics';
 
 export function Game() {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const back = Math.min(4, Math.max(2, parseInt(searchParams.get('back') || '2', 10) || 2));
   const [result, setResult] = useState<GameResult | null>(null);
 
   const game = useTwoBackGame((r) => {
@@ -29,7 +31,7 @@ export function Game() {
       totalMatches: r.totalMatches,
       gamesPlayed: 1,
     });
-  });
+  }, back);
 
   const handleDone = () => {
     setResult(null);
@@ -50,6 +52,7 @@ export function Game() {
           handleMatch={game.handleMatch}
           onDone={handleDone}
           result={result}
+          back={back}
         />
       </div>
     </div>
