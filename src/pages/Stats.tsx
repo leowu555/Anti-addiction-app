@@ -12,7 +12,7 @@ export function Stats() {
   return (
     <div className="mx-auto max-w-lg space-y-8 p-6">
       <header className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-slate-100">Focus Stats</h1>
+        <h1 className="text-2xl font-bold text-stone-800">Focus Stats</h1>
         <Link to="/">
           <Button variant="ghost" size="sm">
             ← Back
@@ -27,21 +27,21 @@ export function Stats() {
         <StatCard label="Current Streak" value={`${stats.currentStreak} days`} />
       </div>
 
-      <div className="rounded-2xl bg-slate-800/80 p-6">
-        <h2 className="mb-4 text-sm font-medium text-slate-400">Recent Sessions</h2>
+      <div className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-200">
+        <h2 className="mb-4 text-sm font-medium text-stone-500">Recent Sessions</h2>
         {stats.sessions.length === 0 ? (
-          <p className="text-slate-500">No sessions yet. Play a game to see stats.</p>
+          <p className="text-stone-500">No sessions yet. Play a game to see stats.</p>
         ) : (
           <ul className="space-y-3">
             {[...stats.sessions].reverse().slice(0, 10).map((s, i) => (
               <li
                 key={i}
-                className="flex justify-between rounded-lg bg-slate-800/60 px-3 py-2 text-sm"
+                className="flex justify-between rounded-lg bg-stone-100 px-3 py-2 text-sm"
               >
-                <span className="text-slate-400">
+                <span className="text-stone-500">
                   {new Date(s.timestamp).toLocaleDateString()}
                 </span>
-                <span className="text-cyan-400">{Math.round(s.accuracy * 100)}%</span>
+                <span className="font-medium text-stone-700">{Math.round(s.accuracy * 100)}%</span>
               </li>
             ))}
           </ul>
@@ -53,9 +53,9 @@ export function Stats() {
 
 function StatCard({ label, value }: { label: string; value: string | number }) {
   return (
-    <div className="rounded-xl bg-slate-800/80 p-4 text-center">
-      <div className="text-2xl font-bold text-cyan-400">{value}</div>
-      <div className="text-sm text-slate-400">{label}</div>
+    <div className="rounded-xl bg-white p-4 text-center shadow-sm ring-1 ring-stone-200">
+      <div className="text-2xl font-bold text-stone-700">{value}</div>
+      <div className="text-sm text-stone-500">{label}</div>
     </div>
   );
 }

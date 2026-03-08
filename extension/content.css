@@ -1,4 +1,4 @@
-/* ScrollShield overlay */
+/* ScrollShield overlay – calming neutral (Monk Mode) */
 
 #scrollshield-overlay {
   position: fixed;
@@ -20,7 +20,7 @@
 .scrollshield-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(15, 23, 42, 0.85);
+  background: rgba(41, 37, 36, 0.4);
   backdrop-filter: blur(8px);
 }
 
@@ -29,10 +29,10 @@
   max-width: 400px;
   width: 100%;
   padding: 32px;
-  background: #1e293b;
+  background: #fafaf9;
   border-radius: 16px;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-  border: 1px solid #334155;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e7e5e4;
   text-align: center;
   animation: scrollshield-scale 0.3s ease-out;
 }
@@ -52,13 +52,13 @@
   margin: 0 0 12px;
   font-size: 1.5rem;
   font-weight: 700;
-  color: #f1f5f9;
+  color: #292524;
 }
 
 .scrollshield-modal p {
   margin: 0 0 24px;
   font-size: 1rem;
-  color: #94a3b8;
+  color: #78716c;
 }
 
 .scrollshield-btn {
@@ -68,8 +68,8 @@
   margin-bottom: 12px;
   font-size: 1rem;
   font-weight: 600;
-  color: #0f172a;
-  background: #22d3ee;
+  color: #fff;
+  background: #57534e;
   border: none;
   border-radius: 12px;
   cursor: pointer;
@@ -77,7 +77,7 @@
 }
 
 .scrollshield-btn:hover {
-  background: #06b6d4;
+  background: #44403c;
 }
 
 .scrollshield-dismiss {
@@ -85,7 +85,7 @@
   width: 100%;
   padding: 8px;
   font-size: 0.875rem;
-  color: #64748b;
+  color: #78716c;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -93,5 +93,5 @@
 }
 
 .scrollshield-dismiss:hover {
-  color: #94a3b8;
+  color: #57534e;
 }

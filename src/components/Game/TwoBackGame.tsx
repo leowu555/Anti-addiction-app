@@ -75,8 +75,8 @@ export function TwoBackGame({
   if (!isPlaying) {
     return (
       <div className="space-y-6 text-center">
-        <h2 className="text-2xl font-bold text-slate-100">{back}-Back Challenge</h2>
-        <p className="text-slate-400">
+        <h2 className="text-2xl font-bold text-stone-800">{back}-Back Challenge</h2>
+        <p className="text-stone-500">
           Press MATCH when the current letter matches the one from {back} steps ago.
         </p>
         <Button variant="primary" size="lg" onClick={startGame}>
@@ -88,13 +88,13 @@ export function TwoBackGame({
 
   return (
     <div className="space-y-8">
-      <p className="text-center text-sm font-medium text-cyan-400">{back}-back game</p>
+      <p className="text-center text-sm font-medium text-stone-600">{back}-back game</p>
       <ProgressBar progress={progress} label="Time" showValue />
-      <p className="text-center text-slate-400">
+      <p className="text-center text-stone-500">
         {Math.floor(elapsed)}s / 60s
       </p>
 
-      <div className="rounded-2xl bg-slate-800/80 p-8">
+      <div className="rounded-2xl bg-white p-8 shadow-sm ring-1 ring-stone-200">
         <Stimulus value={currentStimulus} />
       </div>
 
