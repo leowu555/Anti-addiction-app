@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      padding: 24px;
+      max-width: 480px;
+      margin: 0 auto;
+      background: #0f172a;
+      color: #f1f5f9;
+    }
+    h1 { font-size: 1.25rem; margin-bottom: 16px; color: #22d3ee; }
+    label { display: block; margin-bottom: 8px; font-size: 0.875rem; color: #94a3b8; }
+    input {
+      width: 100%;
+      padding: 10px 12px;
+      margin-bottom: 16px;
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      color: #f1f5f9;
+      font-size: 0.9rem;
+    }
+    button {
+      padding: 10px 20px;
+      background: #22d3ee;
+      color: #0f172a;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    button:hover { background: #06b6d4; }
+    #status { margin-top: 12px; font-size: 0.875rem; color: #64748b; }
+  </style>
+</head>
+<body>
+  <h1>ScrollShield</h1>
+  <label for="appUrl">2-Back game URL (where to open on interruption):</label>
+  <input type="url" id="appUrl" placeholder="http://localhost:5173/game">
+  <button id="save">Save</button>
+  <p id="status"></p>
+  <script src="options.js"></script>
+</body>
+</html>

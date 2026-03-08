@@ -39,6 +39,23 @@ Open http://localhost:5173 and tap **Simulate Doomscroll** to demo the flow.
 - PWA (manifest + service worker via vite-plugin-pwa)
 - React Router
 
+## Chrome Extension
+
+Detects doomscrolling on TikTok, Instagram, and YouTube, then shows an interruption overlay with a link to the 2-Back game.
+
+**Install:**
+1. Build the app: `npm run build`
+2. Run the app: `npm run preview` (or deploy it)
+3. In Chrome, go to `chrome://extensions`
+4. Enable "Developer mode"
+5. Click "Load unpacked" and select the `extension` folder
+
+**Configure:** Right-click the extension icon → Options, and set the 2-Back game URL (default: `http://localhost:5173/game`). Use your deployed URL when in production.
+
+**Triggers:** After 45 seconds of continuous scrolling or 2500px scrolled on TikTok/Instagram/YouTube.
+
+---
+
 ## PWA Installation
 
 - Run `npm run build` then `npm run preview`
