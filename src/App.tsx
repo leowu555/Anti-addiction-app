@@ -56,9 +56,11 @@ function AppContent() {
 
       <Modal isOpen={showInterruption}>
         {interruptionStep === 'breathe' ? (
-          <p className="min-h-[120px] text-center text-3xl font-light text-stone-600 opacity-0 animate-breathe-in">
-            breathe…
-          </p>
+          <div className="flex min-h-[200px] items-center justify-center">
+            <p className="text-center text-3xl font-bold text-stone-800 animate-breathe-in">
+              Breath
+            </p>
+          </div>
         ) : (
           <div className="space-y-6 text-center animate-screen-in">
             <h2 className="text-xl font-bold text-stone-800">
