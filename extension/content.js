@@ -25,7 +25,6 @@
         <h2>You're doomscrolling.</h2>
         <p>Let's turn this into brain training.</p>
         <button id="scrollshield-start" class="scrollshield-btn">Start 2-Back Challenge</button>
-        <button id="scrollshield-dismiss" class="scrollshield-dismiss">Maybe later</button>
       </div>
     `;
 
@@ -36,11 +35,6 @@
         const url = result.appUrl || 'http://localhost:5173/game';
         window.location.href = url;
       });
-    });
-
-    overlay.querySelector('#scrollshield-dismiss').addEventListener('click', () => {
-      overlay.remove();
-      overlayShown = false;
     });
   }
 

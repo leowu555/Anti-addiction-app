@@ -55,12 +55,6 @@ function AppContent() {
           <Button variant="primary" size="lg" fullWidth onClick={handleStartChallenge}>
             Start {challengeBack}-Back Challenge
           </Button>
-          <button
-            className="block w-full text-sm text-slate-500 hover:text-slate-400"
-            onClick={() => setShowInterruption(false)}
-          >
-            Maybe later
-          </button>
         </div>
       </Modal>
     </>

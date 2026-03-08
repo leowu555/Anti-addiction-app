@@ -53,17 +53,13 @@ export function TwoBackGame({
     const accuracy = result.totalMatches > 0 ? result.correctMatches / result.totalMatches : 0;
     const rts = result.reactionTimes;
     const avgRT = rts.length > 0 ? rts.reduce((a, b) => a + b, 0) / rts.length : 0;
-    const speedScore = avgRT > 0 ? Math.max(0, 1 - avgRT / 1000) : 0;
-    const workingMemoryScore = accuracy * 0.7 + speedScore * 0.3;
 
     return (
       <div className="mx-auto max-w-md">
         <GameStats
           accuracy={accuracy}
           reactionTime={avgRT}
-          workingMemoryScore={workingMemoryScore}
           correctMatches={result.correctMatches}
-          falsePositives={result.falsePositives}
           misses={result.misses}
           message={pickMessage(accuracy)}
           onDone={onDone}
