@@ -13,6 +13,8 @@ export default {
       animation: {
         'modal-in': 'modalIn 0.3s ease-out',
         'fade-in': 'fadeIn 0.3s ease-out',
+        'breathe-in': 'breatheIn 2.5s ease-out forwards',
+        'screen-in': 'fadeIn 0.4s ease-out',
       },
       keyframes: {
         modalIn: {
@@ -20,6 +22,10 @@ export default {
           '100%': { opacity: '1', transform: 'scale(1)' },
         },
         fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        breatheIn: {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
         },

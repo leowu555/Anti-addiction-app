@@ -13,10 +13,10 @@ interface StimulusProps {
 function ShapeIcon({ name }: { name: string }) {
   const n = name.toLowerCase();
   if (n === 'circle') {
-    return <div className="h-24 w-24 rounded-full border-4 border-cyan-400" />;
+    return <div className="h-24 w-24 rounded-full border-4 border-stone-500" />;
   }
   if (n === 'square') {
-    return <div className="h-24 w-24 rounded-lg border-4 border-cyan-400" />;
+    return <div className="h-24 w-24 rounded-lg border-4 border-stone-500" />;
   }
   if (n === 'triangle') {
     return (
@@ -27,7 +27,7 @@ function ShapeIcon({ name }: { name: string }) {
           height: 0,
           borderLeft: '48px solid transparent',
           borderRight: '48px solid transparent',
-          borderBottom: '96px solid rgb(34 211 238)',
+          borderBottom: '96px solid #78716c',
         }}
       />
     );
@@ -35,13 +35,13 @@ function ShapeIcon({ name }: { name: string }) {
   if (n === 'diamond') {
     return (
       <div
-        className="h-24 w-24 border-4 border-cyan-400"
+        className="h-24 w-24 border-4 border-stone-500"
         style={{ transform: 'rotate(45deg)' }}
       />
     );
   }
   // star - use unicode
-  return <span className="text-8xl text-cyan-400">★</span>;
+  return <span className="text-8xl text-stone-600">★</span>;
 }
 
 export function Stimulus({ value }: StimulusProps) {
@@ -54,7 +54,7 @@ export function Stimulus({ value }: StimulusProps) {
       {isShape ? (
         <ShapeIcon name={value} />
       ) : (
-        <span className="text-7xl font-bold text-cyan-400 drop-shadow-lg">
+        <span className="text-7xl font-bold text-stone-700 drop-shadow-lg">
           {value}
         </span>
       )}

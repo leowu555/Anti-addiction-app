@@ -26,12 +26,12 @@ export function Modal({ isOpen, onClose, children, closeOnBackdrop = false }: Mo
       aria-modal="true"
     >
       <div
-        className="absolute inset-0 bg-slate-900/80 backdrop-blur-sm"
+        className="absolute inset-0 bg-stone-800/50 backdrop-blur-sm"
         onClick={handleBackdropClick}
         aria-hidden="true"
       />
       <div
-        className="relative z-10 w-full max-w-md rounded-2xl bg-slate-800 p-6 shadow-2xl ring-1 ring-slate-700 animate-modal-in"
+        className="relative z-10 w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl ring-1 ring-stone-200 animate-modal-in"
         onClick={(e) => e.stopPropagation()}
       >
         {children}

@@ -22,10 +22,10 @@ export function Button({
 }: ButtonProps) {
   const base = 'rounded-xl font-semibold transition-all active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed';
   const variants = {
-    primary: 'bg-cyan-400 text-slate-900 hover:bg-cyan-300',
-    accent: 'bg-purple-500 text-white hover:bg-purple-400',
-    secondary: 'bg-slate-700 text-slate-100 hover:bg-slate-600',
-    ghost: 'bg-transparent text-cyan-400 hover:bg-slate-800',
+    primary: 'bg-stone-600 text-white hover:bg-stone-500',
+    accent: 'bg-stone-600 text-white hover:bg-stone-500',
+    secondary: 'bg-white text-stone-700 border border-stone-200 hover:bg-stone-50',
+    ghost: 'bg-transparent text-stone-600 hover:bg-stone-200/60',
   };
   const sizes = {
     sm: 'px-3 py-1.5 text-sm',

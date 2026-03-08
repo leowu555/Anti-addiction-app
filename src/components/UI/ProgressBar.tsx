@@ -20,14 +20,14 @@ export function ProgressBar({
   return (
     <div className={`w-full ${className}`}>
       {(label || showValue) && (
-        <div className="mb-1 flex justify-between text-sm text-slate-400">
+        <div className="mb-1 flex justify-between text-sm text-stone-500">
           {label && <span>{label}</span>}
           {showValue && <span>{Math.round(clamped)}%</span>}
         </div>
       )}
-      <div className="h-2 w-full overflow-hidden rounded-full bg-slate-700">
+      <div className="h-2 w-full overflow-hidden rounded-full bg-stone-200">
         <div
-          className="h-full rounded-full bg-cyan-400 transition-all duration-300"
+          className="h-full rounded-full bg-stone-500 transition-all duration-300"
           style={{ width: `${clamped}%` }}
         />
       </div>
