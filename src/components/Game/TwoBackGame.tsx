@@ -108,9 +108,6 @@ export function TwoBackGame({
         >
           MATCH
         </Button>
-        <p className="text-center text-sm text-slate-500">
-          Correct: {correctMatches} · Misses: {misses}
-        </p>
       </div>
     </div>
   );
