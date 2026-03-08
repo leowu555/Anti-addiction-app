@@ -41,6 +41,7 @@ export function useTwoBackGame(onGameEnd: (result: GameResult) => void) {
   const missesRef = useRef(0);
   const reactionTimesRef = useRef<number[]>([]);
   const sequenceRef = useRef<StimulusType[]>([]);
+  const matchedIndicesRef = useRef<Set<number>>(new Set());
 
   correctMatchesRef.current = correctMatches;
   falsePositivesRef.current = falsePositives;
@@ -73,17 +74,18 @@ export function useTwoBackGame(onGameEnd: (result: GameResult) => void) {
   const handleMatch = useCallback(() => {
     if (!isPlaying || sequence.length === 0) return;
 
-    const isActualMatch = checkMatch(currentIndex, sequence);
+    const isMatch = checkMatch(currentIndex, sequence);
     const now = Date.now();
 
-    if (isActualMatch) {
+    if (isMatch) {
+      matchedIndicesRef.current.add(currentIndex);
       correctMatchesRef.current += 1;
       reactionTimesRef.current.push(now - lastStimulusTimeRef.current);
       setCorrectMatches((c) => c + 1);
       setReactionTimes((r) => [...r, now - lastStimulusTimeRef.current]);
     } else {
-      falsePositivesRef.current += 1;
-      setFalsePositives((f) => f + 1);
+      missesRef.current += 1;
+      setMisses((m) => m + 1);
     }
   }, [isPlaying, sequence, currentIndex]);
 
@@ -94,6 +96,7 @@ export function useTwoBackGame(onGameEnd: (result: GameResult) => void) {
     missesRef.current = 0;
     reactionTimesRef.current = [];
     sequenceRef.current = seq;
+    matchedIndicesRef.current = new Set();
     setSequence(seq);
     setCurrentIndex(0);
     setCorrectMatches(0);
@@ -115,8 +118,9 @@ export function useTwoBackGame(onGameEnd: (result: GameResult) => void) {
         return;
       }
 
-      const wasMatch = checkMatch(idx - 1, seq);
-      if (wasMatch) {
+      const prevIdx = idx - 1;
+      const wasMatch = checkMatch(prevIdx, seq);
+      if (wasMatch && !matchedIndicesRef.current.has(prevIdx)) {
         missesRef.current += 1;
         setMisses((m) => m + 1);
       }

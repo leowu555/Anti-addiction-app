@@ -75,7 +75,7 @@ export function TwoBackGame({
       <div className="space-y-6 text-center">
         <h2 className="text-2xl font-bold text-slate-100">2-Back Challenge</h2>
         <p className="text-slate-400">
-          Press MATCH when the current item matches the one from 2 steps ago.
+          Press MATCH when the current letter matches the one from 2 steps ago.
         </p>
         <Button variant="primary" size="lg" onClick={startGame}>
           Start Game
